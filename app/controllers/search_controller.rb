@@ -1,6 +1,12 @@
 class SearchController < ApplicationController
   def index
     @zip = params[:q]
-    @stores = (BestBuyService.store_info(@zip))["stores"]
+    @stores = api_response["stores"]
+  end
+
+private
+
+  def api_response
+    BestBuyService.store_info(@zip)
   end
 end
