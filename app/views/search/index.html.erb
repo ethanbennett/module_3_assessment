@@ -5,11 +5,11 @@
   <div class="row">
     <% @stores.each do |store| %>
     <div class="col-sm-3">
-      <h3><%= store["longName"] %></h3>
-      <p><%= store["city"] %></p>
-      <p><%= store["distance"] %></p>
-      <p><%= store["phone"] %></p>
-      <p><%= store["storeType"] %></p></br>
+      <h3>Store Name: <%= store["longName"] %></h3>
+      <p>City: <%= store["city"] %></p>
+      <p>Distance: <%= store["distance"] %></p>
+      <p>Phone: <%= store["phone"] %></p>
+      <p>Store Type: <%= store["storeType"] %></p></br>
     </div>
   <% end %>
   </div>
