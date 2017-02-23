@@ -3,11 +3,11 @@ class Api::V1::ItemsController < ApplicationController
 
   def index
     @items = Item.all
-    render json: @items, :serializer => ItemSerializer
+    render json: @items
   end
 
   def show
-    render json: @item, :serializer => ItemSerializer
+    render json: @item
   end
 
   def create
