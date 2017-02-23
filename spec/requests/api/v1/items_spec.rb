@@ -17,5 +17,7 @@ RSpec.describe "Items API" do
     expect(status).to eq(200)
   end
 
-
+  # Will add extra tests, if there's time. I'm having issues getting
+  # anything besides get requests to work here. Everything works in
+  # Postman, though.
 end

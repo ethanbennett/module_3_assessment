@@ -21,9 +21,15 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def update
+    if @item.update(item_params)
+      render json: @item, status: updated
+    else
+    end
   end
 
   def destroy
+    @item.destroy
+    head :no_content
   end
 
 private
@@ -32,10 +38,10 @@ private
     @item = Item.find(params[:id])
   end
 
-  # For some reason, the strong params are throwing errors. Definitely
+  # For some reason, the strong params are throwing errors for create. Definitely
   # needs to be refactored, depending on time
 
-  # def item_params
-  #   params.require(:item).permit(:name, :description, :image_url)
-  # end
+  def item_params
+    params.require(:item).permit(:name, :description, :image_url)
+  end
 end
