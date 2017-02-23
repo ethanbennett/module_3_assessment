@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      # resources whatever, except: [:new, :edit]
+      resources :items, except: [:new, :edit]
     end
   end
 end
