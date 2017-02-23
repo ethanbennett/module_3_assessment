@@ -17,7 +17,18 @@ RSpec.describe "Items API" do
     expect(status).to eq(200)
   end
 
-  # Will add extra tests, if there's time. I'm having issues getting
-  # anything besides get requests to work here. Everything works in
-  # Postman, though.
+  it "can add a new item with post request" do
+    post api_v1_items_path(name: "new", description: "new", image_url: "new")
+    expect(status).to eq(201)
+  end
+
+  it "can update an existing item with put request" do
+    put api_v1_item_path(@item, description: "new")
+    expect(status).to eq(200)
+  end
+
+  it "can destroy an existing item with delete request" do
+    delete api_v1_item_path(@item)
+    expect(status).to eq(204)
+  end
 end
