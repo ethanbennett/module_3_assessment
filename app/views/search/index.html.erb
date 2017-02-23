@@ -1,0 +1,16 @@
+<h1>Results for <%= @zip %></h1>
+<h2>16 Total Stores</h2>
+
+<div class="container">
+  <div class="row">
+    <% @stores.each do |store| %>
+    <div class="col-sm-3">
+      <h3><%= store["longName"] %></h3>
+      <p><%= store["city"] %></p>
+      <p><%= store["distance"] %></p>
+      <p><%= store["phone"] %></p>
+      <p><%= store["storeType"] %></p></br>
+    </div>
+  <% end %>
+  </div>
+</div>
