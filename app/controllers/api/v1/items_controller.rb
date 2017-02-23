@@ -12,7 +12,7 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(name: params["name"], description: params[:description], image_url: params["image_url"])
+    @item = Item.new(item_params)
     if @item.save
       render json: @item, status: :created
     else
@@ -22,8 +22,9 @@ class Api::V1::ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      render json: @item, status: updated
+      render json: @item
     else
+      render json: @item.errors, status: :unprocessable_entity
     end
   end
 
@@ -38,10 +39,7 @@ private
     @item = Item.find(params[:id])
   end
 
-  # For some reason, the strong params are throwing errors for create. Definitely
-  # needs to be refactored, depending on time
-
   def item_params
-    params.require(:item).permit(:name, :description, :image_url)
+    params.permit(:name, :description, :image_url)
   end
 end
